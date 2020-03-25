@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	th{
+		background: pink;
+	}
+</style>
+<link rel="" >
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		function maskFind(){
+			$.ajax("getMask",{success:function(data){
+				alert(data);
+			}})
+		}
+		
+		
+	   $("#btn").click(function(){
+		   maskFind();
+	   })
+		
+		
+	});
+</script>
+</head>
+<body>
+	<h2>경기도 공적마스크 판매 현황</h2>
+	<b>도시명 : <input type="text" id="city"></b>
+	<button id="btn">검색</button>
+	<hr>
+	<table id="tb" width="80%">
+		<tr>
+			<th>판매장소</th>
+			<th>주소</th>
+			<th>판매처유형</th>
+			<th>입고시간</th>
+			<th>잔여상태</th>
+			<th>업데이트 시간</th>			
+		</tr>
+	</table>
+</body>
+</html>

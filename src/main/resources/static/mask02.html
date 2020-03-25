@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	th{
+		background: pink;
+	}
+	tr{
+		background: light gray;
+		text-align: center;
+	}
+</style>
+<link rel="" >
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		$("#btn").click(function(){
+			$.ajax("getMask", {success:function(data){
+				var arr = $(data).find("row");
+			   $.each(arr, function(idx, item){
+				   var cName = $(this).find("SIGUN_NM").text();
+				   var hName = $(this).find("MEDCARE_INST_NM").text();
+				   var tel = $(this).find("EMGNCY_CENTER_TELNO").text();
+				   var addr = $(this).find("REFINE_ROADNM_ADDR").text();
+				   
+				   var tr = $("<tr></tr>");
+				   $(tr).append($("<td></td>").html(cName));
+				   $(tr).append($("<td></td>").html(hName));
+				   $(tr).append($("<td></td>").html(tel));
+				   $(tr).append($("<td></td>").html(addr));
+				   $("#tb").append(tr);
+			   });
+			}})
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<h2>코로나바이러스 감염증 선별진료소 운영 의료기관 현황</h2>
+	<b>도시명 : <input type="text" id="city"></b>
+	<button id="btn">검색</button>
+	<hr>
+	<table id="tb" width="80%">
+		<tr>
+			<th>시군명</th>
+			<th>의료기관명</th>
+			<th>전화번호</th>
+			<th>도로명주소</th>
+		</tr>
+	</table>
+</body>
+</html>
